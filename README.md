@@ -4,7 +4,7 @@
 O envio de email contempla a ligação com banco de dados e o RabbitMQ como mensageiro agora. 
 </p><br>
 <div align="center">
-    <img src="frontend/blog/src/assets/Video_Apresentacao.gif" width="500" height="350">
+    <img src="proj_blog/src/assets/Video_Apresentacao.gif" width="500" height="350">
 </div>
 
 <p><br>
