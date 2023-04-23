@@ -1,27 +1,66 @@
-# ProjBlog
+<h2>Projeto Meu Blog - ALPHA =V0.02</h2>
+<h2>Update Backend - Envio de Email. (05/2022) </h2>
+<p>
+O envio de email contempla a ligação com banco de dados e o RabbitMQ como mensageiro agora. 
+</p><br>
+<div align="center">
+    <img src="frontend/blog/src/assets/Video_Apresentacao.gif" width="500" height="350">
+</div>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+<p><br>
+Primeiramente esse projeto é criado com objetivo de usar as tecnologias Java e Node.js em conjunto.
+</p><br>
 
-## Development server
+<p>
+De inicio foi gerado o arquivo json usando:
+</p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```shell script
+npm init -y
+```
 
-## Code scaffolding
+```shell script
+npm i json-server
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<h3>SPA(Single-Page Application) Angular</h3>
+Seguindo o projeto, foi criado na parte de frontEnd usando angular algumas pastas: contato, feed, footer, home e navbar com o comando:
 
-## Build
+```shell script
+ng g c (nome da pasta para criar)
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<h2>Outras instalações no frontend:</h2>
 
-## Running unit tests
+```shell script
+npm i bootstrap
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```shell script
+npm i jquery@~3.4.1
+```
 
-## Running end-to-end tests
+```shell script
+npm i popper.js
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```shell script
+ng add @fortawesome/angular-fontawesome
+```
 
-## Further help
+<p>Instalar as 3 opções: free Solid icons, Free Regular Icons e Free brands Icons.</p><br>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<h2>Configurar na pasta angular.json</h2>
+
+```shell script
+            "styles": [
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js"
+            ]
+          },
+```
