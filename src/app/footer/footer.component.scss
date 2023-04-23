@@ -1,0 +1,37 @@
+body {
+  background-image: linear-gradient(to right, #000000, #BD5200, #DB4B03, #000000);
+  background-attachment: fixed;
+  flex-shrink: 0;
+  padding: 50px;
+
+}
+
+.social-network {
+  list-style: none;
+  padding: 0;
+}
+
+.social-network>li {
+  display: inline;
+  padding: 5px;
+  margin: 0;
+  font-size: 25px;
+}
+
+.icoInstagram,
+.icoLinkedin,
+.icoGithub {
+  color: rgb(255, 255, 255);
+}
+
+.icoGithub:hover {
+  color: aqua;
+}
+
+.icoInstagram:hover {
+  color: aqua;
+}
+
+.icoLinkedin:hover {
+  color: aqua;
+}
