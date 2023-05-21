@@ -1,0 +1,18 @@
+body {
+  background-image: linear-gradient(to right, #000000, #BD5200, #DB4B03, #000000);
+  background-attachment: fixed;
+  padding: 1cm;
+}
+
+.line {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin: 0 auto;
+  font-size: 2em;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.margin{
+  margin-top: 10px;
+}

@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContatoComponent } from './contato/contato.component';
 import { HttpClientModule } from '@angular/common/http'
+import { FeedComponent } from './feed/feed.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,9 @@ import { HttpClientModule } from '@angular/common/http'
     NavbarComponent,
     HomeComponent,
     FooterComponent,
+    FeedComponent,
     ContatoComponent,
-  ],
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

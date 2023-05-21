@@ -1,0 +1,49 @@
+<body class="container-fluid">
+  <div>
+    <div class="row mt-5 mb-4">
+      <div class="col-md-4">
+        <div class="card border-0" style="width: 15rem; margin-top: 1rem;">
+          <div class="d-flex justify-content-center">
+            <img src="./../../assets/gokusorri.png" class="bd-placeholder-img rounded-circle carce" width="180"
+              height="180" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice"
+              focusable="false">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center">Marcos Pontes</h5>
+            <p class="card-text text-center">Desenvolvedor FullStack Java e Angular</p>
+            <a href="#" target="_black" class="btn btn-outline-dark d-flex justify-content-center">Sobre mim</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="mt-2">
+          <h3 class="text-center mb-4 text-monospace line">Digite abaixo os seus comentários:</h3>
+          <div class="form-group">
+            <label for="nome" class="text-monospace">Nome:</label>
+            <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Digite o seu Nome"
+              [(ngModel)]="feed.nome">
+          </div>
+          <div class="form-group">
+            <label for="mensagem" class="text-monospace">Mensagem:</label>
+            <textarea name="texto" id="texto" cols="30" rows="4" class="form-control" placeholder="Digite a sua mensage"
+              [(ngModel)]="feed.mensagem"></textarea>
+          </div>
+          <div class="d-flex margin justify-content-end">
+            <button type="button" class="btn btn-outline-info w-20 " (click)="cadastrarMensagem()">Publicar</button>
+          </div>
+        </div>
+        <hr class="mt-5 mb-5">
+        <h3 class="text-center mb-5 text-monospace line">Comentários adicionados</h3>
+        <div class="container">
+          <div class="card mb-4" *ngFor="let feed of listFeed">
+            <div class="card body">
+              <p class="card-text">{{feed.nome}}</p>
+              <p class="card-text">{{feed.mensagem}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
