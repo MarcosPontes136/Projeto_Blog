@@ -13,6 +13,22 @@ body {
   overflow: hidden;
 }
 
+.color-perfil {
+  background-image: linear-gradient(to right, #496c78, #38fffa, #38fffa, #496c78);
+  font-family: sans-serif;
+  font-variant: all-small-caps;
+}
+.button-style{
+  font-size: larger;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.padding-space{
+  padding-bottom: 11.5cm;
+}
+
+
 .margin{
   margin-top: 10px;
 }

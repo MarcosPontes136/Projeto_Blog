@@ -2,7 +2,7 @@ body {
   background-image: linear-gradient(to right, #000000, #BD5200, #DB4B03, #000000);
   background-attachment: fixed;
   flex-shrink: 0;
-  padding: 50px;
+  padding-block: min(96px,43px);
 
 }
 

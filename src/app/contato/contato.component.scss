@@ -5,7 +5,7 @@ body {
 }
 
 .mt-margin{
-  margin-top:14rem !important;
+  margin-top:7.5rem !important;
 }
 
 .line {
@@ -15,4 +15,11 @@ body {
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.button-enviar {
+  font-size: larger;
+  font-style: italic;
+  font-weight: bold;
+  border-bottom-width: thick;
 }
