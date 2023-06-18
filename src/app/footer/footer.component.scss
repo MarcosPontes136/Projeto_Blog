@@ -35,3 +35,36 @@ body {
 .icoLinkedin:hover {
   color: aqua;
 }
+
+#back-to-top {
+  border: 3.2px solid;
+  color: #BD5200;
+  display: none;
+  outline: none;
+  position: fixed;
+  cursor: pointer;
+  right: 1.6rem;
+  bottom: 2.7rem;
+  border-radius: 30%;
+  padding: 0.55rem;
+  opacity: 100%;
+  z-index: 1;
+  transition: opacity 1.5s;
+  transition-property: all;
+  transition-duration: 1.5s;
+
+  &:hover{
+    transition: 0.8s;
+    color: #BD5200;
+    background-color: #000000;
+    border-color: #000000;
+  }
+}
+
+@media (min-device-width: 220px) and (max-width: 1122px) {
+  #back-to-top {
+    right: 0.6rem;
+    bottom: 0.5rem;
+    padding: 0.35rem
+  }
+}

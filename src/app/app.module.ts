@@ -11,6 +11,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ContatoComponent } from './contato/contato.component';
 import { HttpClientModule } from '@angular/common/http'
 import { FeedComponent } from './feed/feed.component';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { FeedComponent } from './feed/feed.component';
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    MatIconModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
