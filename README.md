@@ -1,19 +1,41 @@
-<h2>Projeto Meu Blog - ALPHA =V0.02</h2>
-<h2>Update Backend - Envio de Email. (05/2022) </h2>
+<h2>
+  Projeto Meu Blog - ALPHA =V0.02
+</h2>
+<h2>
+  Update Backend - Envio de Email. (05/2023) 
+</h2>
 <p>
-O envio de email contempla a ligação com banco de dados e o RabbitMQ como mensageiro agora. 
-</p><br>
+  <u><i>https://github.com/MarcosPontes136/microsservico_e-mail</i></u>
+</p>
+<p>
+  O envio de email contempla a ligação com banco de dados e o RabbitMQ como mensageiro agora. 
+</p>
+<br>
+<h2>
+  Update Backend - Listar mensagens no feed do site. (05/2023) 
+</h2>
+<p>
+  <u><i>https://github.com/MarcosPontes136/microsservice_MessageFeed</i></u>
+</p>
+<br>
 <div align="center">
     <img src="src/assets/Video_Apresentacao.gif" width="500" height="350">
 </div>
-
-<p><br>
-Primeiramente esse projeto é criado com objetivo de usar as tecnologias Java e Node.js em conjunto.
-</p><br>
-
-<p>
-De inicio foi gerado o arquivo json usando:
-</p>
+<div align="center">
+  <h4>
+    <br>
+    Esse projeto foi criado com intuito em aprender sobre Node.js.
+    <br>
+    Hoje em dia, após algum tempo de experiência, resolvi migrar totalmente o Backend em arquitetura de microsserviço com Java.
+    <br>
+    O FrontEnd também houve mudanças, foi migrado para o Angular 12+
+    <br><br>
+  </h4>
+</div>
+<div>
+  De inicio foi gerado o arquivo json usando:
+  <br>
+</div>
 
 ```shell script
 npm init -y
