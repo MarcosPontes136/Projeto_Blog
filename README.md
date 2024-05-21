@@ -1,6 +1,13 @@
 <h2>
-  Projeto Meu Blog - ALPHA =V0.02
+  Projeto Meu Blog - RELEASE - 1.0
 </h2>
+<h2>
+  Update Backend - Envia curriculo em PDF para o site. (05/2024) 
+</h2>
+<p>
+  <u><i>https://github.com/MarcosPontes136/microsservice_MessageFeed</i></u>
+</p>
+<br>
 <h2>
   Update Backend - Envio de Email. (05/2023) 
 </h2>
@@ -19,7 +26,7 @@
 </p>
 <br>
 <div align="center">
-    <img src="src/assets/Video_Apresentacao.gif" width="500" height="350">
+    <img src="" width="500" height="350">
 </div>
 <div align="center">
   <h4>
@@ -29,6 +36,10 @@
     Hoje em dia, após algum tempo de experiência, resolvi migrar totalmente o Backend em arquitetura de microsserviço com Java.
     <br>
     O FrontEnd também houve mudanças, foi migrado para o Angular 12+
+    <br><br>
+    Foi incluido o Docker nessa nossa atualização.
+    <br>
+    Esta sendo incluido támbem o AWS EC2.
     <br><br>
   </h4>
 </div>
