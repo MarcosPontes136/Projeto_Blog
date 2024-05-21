@@ -1,34 +1,85 @@
 body {
-  background-image: linear-gradient(to right, #000000, #BD5200, #DB4B03, #000000);
+  background: #21283a;
   background-attachment: fixed;
   padding: 1cm;
+  position: static;
+  width: 100%;
+  min-height: 100vh;
+  height: min-content;
+
+  .tamanhoFonte {
+    font-size: medium;
+  }
+
+  .line {
+    color: #fff;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 0 auto;
+    padding: 20px 0px 5px;
+    font-size: 2em;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .color-perfil {
+    background: #fff;
+    font-family: sans-serif;
+    font-variant: all-small-caps;
+  }
+
+  .button-style{
+    font-size: larger;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .padding-space{
+    padding-bottom: 11.5cm;
+  }
+
+  .margin{
+    margin-top: 10px;
+  }
+
+  .feed.active{
+    transform: scale(0);
+  }
 }
 
-.line {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  margin: 0 auto;
-  font-size: 2em;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
+@media (max-width: 991px) {
+  body{
+    min-height: 150vh;
+    height: min-content;
+    padding: 1px 10px 0px 10px;
+
+    .cardMobile {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .mb-4{
+      margin-top: 0.5rem !important;
+      margin-bottom: 0rem !important;
+    }
+
+    .mb-5 {
+      margin-bottom: 0rem!important;
+    }
+
+    .line{
+      font-size: 1.5em;
+    }
+
+    .container {
+      padding-top: 0px;
+      padding-bottom: 10px;
+    }
+  }
 }
 
-.color-perfil {
-  background-image: linear-gradient(to right, #496c78, #38fffa, #38fffa, #496c78);
-  font-family: sans-serif;
-  font-variant: all-small-caps;
-}
-.button-style{
-  font-size: larger;
-  font-style: italic;
-  font-weight: bold;
-}
-
-.padding-space{
-  padding-bottom: 11.5cm;
-}
 
 
-.margin{
-  margin-top: 10px;
-}
+
+
+

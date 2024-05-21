@@ -1,5 +1,7 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { faInstagram, faFacebook, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { faFacebook, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { MudaClasseService } from '../service/mudaClasse.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-footer',
@@ -7,32 +9,19 @@ import { faInstagram, faFacebook, faLinkedin, faGithub } from '@fortawesome/free
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  private acaoSubscription!: Subscription;
+  isActive!: boolean;
 
-  faInstagram = faInstagram
   faFacebook = faFacebook
   faLinkedin = faLinkedin
   faGithub = faGithub
 
-  constructor() { }
+  constructor(    private mudaClasseService: MudaClasseService) { }
 
   ngOnInit(): void {
-  }
-
-  @HostListener('window:scroll', []) onWindowScroll() {
-    this.funcaoRolagem();
-  }
-
-  funcaoRolagem() {
-    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-      document.getElementById('back-to-top')!.style.display = 'block';
-    } else {
-        document.getElementById('back-to-top')!.style.display = 'none';
-    }
-  }
-
-  voltarTopo() {
-      document.body.scrollTop = 0; // For Safari
-      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    this.acaoSubscription = this.mudaClasseService.acao$.subscribe((estado: boolean) => {
+      this.isActive = estado;
+    });
   }
 
 }

@@ -1,70 +1,97 @@
-body {
-  background-image: linear-gradient(to right, #000000, #BD5200, #DB4B03, #000000);
+*{
+
   background-attachment: fixed;
   flex-shrink: 0;
-  padding-block: min(96px,43px);
-
-}
-
-.social-network {
-  list-style: none;
-  padding: 0;
-}
-
-.social-network>li {
-  display: inline;
-  padding: 5px;
-  margin: 0;
-  font-size: 25px;
-}
-
-.icoInstagram,
-.icoLinkedin,
-.icoGithub {
-  color: rgb(255, 255, 255);
-}
-
-.icoGithub:hover {
-  color: aqua;
-}
-
-.icoInstagram:hover {
-  color: aqua;
-}
-
-.icoLinkedin:hover {
-  color: aqua;
-}
-
-#back-to-top {
-  border: 3.2px solid;
-  color: #BD5200;
-  display: none;
-  outline: none;
-  position: fixed;
-  cursor: pointer;
-  right: 1.6rem;
-  bottom: 2.7rem;
-  border-radius: 30%;
-  padding: 0.55rem;
-  opacity: 100%;
+  padding-block: min(0.6%);
   z-index: 1;
-  transition: opacity 1.5s;
-  transition-property: all;
-  transition-duration: 1.5s;
-
-  &:hover{
-    transition: 0.8s;
-    color: #BD5200;
-    background-color: #000000;
-    border-color: #000000;
-  }
 }
 
-@media (min-device-width: 220px) and (max-width: 1122px) {
-  #back-to-top {
-    right: 0.6rem;
-    bottom: 0.5rem;
-    padding: 0.35rem
+footer
+{
+  background: #21283a;
+  padding: 10px 20px;
+
+  .social-network {
+    list-style: none;
+    padding: 0;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: 0.5s;
+    z-index: 1;
+
+    li {
+      display: inline;
+      padding: 5px;
+      margin: 0;
+      font-size: 25px;
+
+      .icoLinkedin, .icoGithub {
+        color: rgb(255, 255, 255);
+      }
+
+      .icoGithub:hover {
+        color: #1de5ff;
+      }
+
+      .icoLinkedin:hover {
+        color: #1de5ff;
+      }
+    }
   }
 }
+footer.active{
+  transform: scale(0);
+}
+
+@media (max-width: 991px) {
+  footer {
+    padding: 10px;
+
+    .social-network {
+      justify-content: center;
+      gap: 5px;
+    }
+  }
+
+}
+
+
+
+
+
+
+
+// #back-to-top {
+//   border: 3.2px solid;
+//   color: #BD5200;
+//   display: none;
+//   outline: none;
+//   position: fixed;
+//   cursor: pointer;
+//   right: 1.6rem;
+//   bottom: 2.7rem;
+//   border-radius: 30%;
+//   padding: 0.55rem;
+//   opacity: 100%;
+//   z-index: 1;
+//   transition: opacity 1.5s;
+//   transition-property: all;
+//   transition-duration: 1.5s;
+
+//   &:hover{
+//     transition: 0.8s;
+//     color: #BD5200;
+//     background-color: #000000;
+//     border-color: #000000;
+//   }
+// }
+
+// @media (min-device-width: 220px) and (max-width: 1122px) {
+//   #back-to-top {
+//     right: 0.6rem;
+//     bottom: 0.5rem;
+//     padding: 0.35rem
+//   }
+// }

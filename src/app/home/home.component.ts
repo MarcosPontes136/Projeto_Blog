@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
-
+import { Component,OnInit,} from '@angular/core';
+import { ArquivoPDFService } from '../service/arquivoPDF.service';
+import { MudaClasseService } from '../service/mudaClasse.service';
+import { Subscription } from 'rxjs/internal/Subscription';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,12 +9,40 @@ import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
 })
 export class HomeComponent implements OnInit {
 
-  faYoutube = faYoutube
-  faGitHub = faGithub
+  private acaoSubscription!: Subscription;
+  isActive!: boolean;
+  isHome: boolean = true;
 
-  constructor() {
+  caminhoDoPDF!: string;
+
+  constructor(
+    private arquivoService: ArquivoPDFService,
+    private mudaClasseService: MudaClasseService
+  ) {
   }
 
   ngOnInit(): void {
+    this.acaoSubscription = this.mudaClasseService.acao$.subscribe((estado: boolean) => {
+      this.isActive = estado;
+    });
   }
+
+  mostraPDF(): void{
+    this.arquivoService.obterPDF().subscribe(pdf => {
+      this.pegaPDF(pdf);
+    })
+  }
+
+  private pegaPDF(pdfBlob: Blob): void{
+    const file = new Blob([pdfBlob], {type: 'application/pdf'});
+    const fileURL = URL.createObjectURL(file);
+    window.open(fileURL, '_blank');
+  }
+
+  scrollDown(): void {
+    const banner = document.querySelector('.banner');
+    document.body.scrollTop = 1000; // Safari
+    document.documentElement.scrollTop = 1000; // Chrome, Firefox, IE e Opera
+  }
+
 }

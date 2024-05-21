@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EmailService } from '../service/email.service';
 import { Email } from 'src/assets/models/email';
 import { HttpClient } from '@angular/common/http';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { MudaClasseService } from '../service/mudaClasse.service';
 
 @Component({
   selector: 'app-contato',
@@ -10,12 +12,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContatoComponent implements OnInit {
 
-  ngOnInit() {
-  }
+  private acaoSubscription!: Subscription;
+  isActive!: boolean;
 
   mail : Email = new Email();
 
-  constructor(private http: HttpClient, private emailService :EmailService) { }
+  constructor(private mudaClasseService: MudaClasseService, private emailService :EmailService) { }
+
+  ngOnInit() {
+    this.acaoSubscription = this.mudaClasseService.acao$.subscribe((estado: boolean) => {
+      this.isActive = estado;
+    });
+  }
 
   private enviarEmail() {
     this.emailService.enviarEmail(this.mail)

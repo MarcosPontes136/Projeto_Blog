@@ -1,8 +1,8 @@
 <body class="container-fluid" >
-  <div class="container">
+  <div class="container" [ngClass]="{'active': isActive}">
     <h1 class="display-4 fw-bold mt-margin text-center line">Envie um Email</h1>
     <form method="POST" th:action="@{/contato}" id="emailForm" (ngSubmit)="onSubmit()" #Contato>
-      <div class="mb-3 fw-bold mt-margin text-white">
+      <div class="mb-3 fw-bold mt-margin text-white marginMobile">
         <label for="nome">Nome</label>
         <input type="text" class="form-control" id="nome" placeholder="Digite seu nome: " required [(ngModel)]="mail.fromName"
           name="nome">
@@ -12,7 +12,7 @@
         <input type="text" class="form-control" id="email" placeholder="name@example.com" required
           [(ngModel)]="mail.fromEmail" name="email">
       </div>
-      <div class="mb-3 fw-bold mt-margin text-white">
+      <div class="mb-3 fw-bold mt-margin text-white marginMobile">
         <label for="nome">assunto</label>
         <input type="text" class="form-control" id="assunto" placeholder="Digite o assunto: " required [(ngModel)]="mail.subject"
           name="subject">
@@ -22,8 +22,8 @@
         <textarea type="text" class="form-control" id="mensagem" placeholder="Digite sua mensagem: " rows="3" required [(ngModel)]="mail.text"
           name="mensagem"></textarea>
       </div>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5" style="margin-top: 1.5cm;">
-        <button type="submit" class="btn btn-outline-dark fw-bold button-enviar" onclick="onSubmit">Enviar</button>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5 buttonMobile" style="margin-top: 1.5cm;">
+        <button type="submit" class="btn btn-outline-primary fw-bold button-enviar" onclick="onSubmit">Enviar</button>
       </div>
     </form>
   </div>
