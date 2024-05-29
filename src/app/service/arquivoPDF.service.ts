@@ -10,7 +10,7 @@ export class ArquivoPDFService {
 
   constructor(private http :HttpClient) { }
 
-  private baseUrl = 'http://ec2-15-228-220-126.sa-east-1.compute.amazonaws.com:8083/api/arquivos/obterPDF';
+  private baseUrl = 'http://ec2-18-229-158-214.sa-east-1.compute.amazonaws.com:8083/api/arquivos/obterPDF';
 
   obterPDF(): Observable<Blob> {
     const headers = new HttpHeaders({
