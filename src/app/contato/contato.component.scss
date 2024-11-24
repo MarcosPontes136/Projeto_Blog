@@ -32,6 +32,8 @@ body {
 
 @media (max-width: 991px) {
   body{
+    min-height: 150vh;
+    height: min-content;
     padding: 1px 10px 0px 10px;
 
     .marginMobile{

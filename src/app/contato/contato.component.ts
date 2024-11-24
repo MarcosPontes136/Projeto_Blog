@@ -11,14 +11,16 @@ import { FormsModule } from '@angular/forms';
     standalone: true,
     imports: [CommonModule, FormsModule],
     templateUrl: './contato.component.html',
-    styleUrls: ['./contato.component.scss']
+    styleUrls: ['./contato.component.scss', '../app.component.scss']
 })
 export class ContatoComponent implements OnInit {
 
   private acaoSubscription!: Subscription;
   isActive!: boolean;
 
-  mail : Email = new Email();
+  e_mail : Email = new Email();
+
+  emailValido = /[^@]+@[^@]+\.[a-zA-Z]{2,6}/.test(this.e_mail.fromEmail);
 
   constructor(private mudaClasseService: MudaClasseService, private emailService :EmailService) { }
 
@@ -29,8 +31,23 @@ export class ContatoComponent implements OnInit {
   }
 
   private enviarEmail() {
-    this.emailService.enviarEmail(this.mail)
+    this.emailService.enviarEmail(this.e_mail)
       .subscribe(data => console.log(data));
+  }
+
+  validaBotao(): boolean {
+    const emailValido = /[^@]+@[^@]+\.[a-zA-Z]{2,6}/.test(this.e_mail.fromEmail);
+
+    return (
+      !this.e_mail.fromName ||
+      this.e_mail.fromName.length < 3 ||
+      !this.e_mail.fromEmail ||
+      !emailValido ||
+      !this.e_mail.subject ||
+      this.e_mail.subject.length < 5 ||
+      !this.e_mail.text ||
+      this.e_mail.text.length < 5
+    );
   }
 
   onSubmit() {

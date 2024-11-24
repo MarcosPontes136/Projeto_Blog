@@ -17,22 +17,50 @@
       </div>
 
       <div class="col-md-8">
-        <div class="mt-2">
-          <h3 class="text-center mb-4 text-monospace line">Digite abaixo os seus comentários:</h3>
-          <div class="form-group">
-            <label for="nome" class="text-monospace">Nome:</label>
-            <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Digite o seu Nome"
-              [(ngModel)]="feed.nome">
+        <form class="was-validated">
+          <div class="mt-2">
+            <h3 class="text-center mb-4 text-monospace line">Digite abaixo os seus comentários:</h3>
+            <div class="form-group">
+              <label for="titulo" class="text-monospace">Nome:</label>
+              <input type="text" name="titulo" id="titulo" minlength="3" maxlength="50" class="form-control" placeholder="Digite o seu Nome"
+                [(ngModel)]="feed.nome" #titulo = "ngModel" pattern="[A-Za-zÀ-ÿ\s]+" required >
+
+                <div *ngIf="titulo.errors?.['required']" class="invalid-feedback">
+                  O campo é obrigatório.
+                </div>
+                <div *ngIf="titulo.errors?.['minlength']" class="invalid-feedback">
+                  Espera-se no mínimo {{ titulo.errors?.['minlength'].requiredLength }} caracteres.
+                </div>
+                <div *ngIf="titulo.errors?.['pattern']" class="invalid-feedback">
+                  Por favor, insira apenas letras.
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label for="mensagem" class="text-monospace">Mensagem:</label>
+              <textarea name="textoMensagem" id="textoMensagem" cols="30" rows="4" minlength="5" maxlength="250" class="form-control" placeholder="Digite a sua mensage"
+                [(ngModel)]="feed.mensagem" #textoMensagem = "ngModel" required #mensagem = "ngModel"></textarea>
+
+                <div *ngIf="mensagem.errors?.['required']" class="invalid-feedback">
+                  O campo é obrigatório.
+                </div>
+                <div *ngIf="mensagem.errors?.['minlength']" class="invalid-feedback">
+                  Espera-se no mínimo {{ mensagem.errors?.['minlength'].requiredLength }} caracteres.
+                </div>
+            </div>
+
+            <div class="d-flex margin justify-content-end">
+              <button type="button" class="btn btn-outline-info w-20 " (click)="cadastrarMensagem()" [disabled]="validaBotao()">Publicar</button>
+            </div>
+
+            @if (titulo.errors?.['required'] || titulo.errors?.['minlength'] || titulo.errors?.['pattern'] || mensagem.errors?.['minlength'] || mensagem.errors?.['required']) {
+              <div class="alert alert-info marginAvisoMensagem" role="alert">
+                Necessário preencher os campos acima!
+              </div>
+            }
+
           </div>
-          <div class="form-group">
-            <label for="mensagem" class="text-monospace">Mensagem:</label>
-            <textarea name="texto" id="texto" cols="30" rows="4" class="form-control" placeholder="Digite a sua mensage"
-              [(ngModel)]="feed.mensagem"></textarea>
-          </div>
-          <div class="d-flex margin justify-content-end">
-            <button type="button" class="btn btn-outline-info w-20 " (click)="cadastrarMensagem()">Publicar</button>
-          </div>
-        </div>
+        </form>
         <hr class="mt-5 mb-5">
         <h3 class="text-center mb-5 text-monospace line">Comentários adicionados</h3>
         <div class="container">
