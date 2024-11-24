@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MudaClasseService } from '../service/mudaClasse.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+    selector: 'app-navbar',
+    standalone: true,
+    imports: [CommonModule],
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
 

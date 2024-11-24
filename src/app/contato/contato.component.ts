@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailService } from '../service/email.service';
 import { Email } from 'src/assets/models/email';
-import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { MudaClasseService } from '../service/mudaClasse.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-contato',
-  templateUrl: './contato.component.html',
-  styleUrls: ['./contato.component.scss']
+    selector: 'app-contato',
+    standalone: true,
+    imports: [CommonModule, FormsModule],
+    templateUrl: './contato.component.html',
+    styleUrls: ['./contato.component.scss']
 })
 export class ContatoComponent implements OnInit {
 

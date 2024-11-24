@@ -3,11 +3,15 @@ import { Feed } from 'src/assets/models/feed';
 import { FeedService } from '../service/feed.service';
 import { Subscription } from 'rxjs';
 import { MudaClasseService } from '../service/mudaClasse.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-feed',
-  templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.scss']
+    selector: 'app-feed',
+    standalone: true,
+    imports: [CommonModule, FormsModule],
+    templateUrl: './feed.component.html',
+    styleUrls: ['./feed.component.scss']
 })
 export class FeedComponent implements OnInit {
 
