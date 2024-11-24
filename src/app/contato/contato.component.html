@@ -1,30 +1,74 @@
 <body class="container-fluid" >
   <div class="container" [ngClass]="{'active': isActive}">
-    <h1 class="display-4 fw-bold mt-margin text-center line">Envie um Email</h1>
-    <form method="POST" th:action="@{/contato}" id="emailForm" (ngSubmit)="onSubmit()" #Contato>
+    <h1 class="display-4 fw-bold mt-margin text-center line">Envie um Email</h1>]
+    <form class="was-validated" method="POST" th:action="@{/contato}" id="emailForm" (ngSubmit)="onSubmit()" #Contato>
       <div class="mb-3 fw-bold mt-margin text-white marginMobile">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" placeholder="Digite seu nome: " required [(ngModel)]="mail.fromName"
-          name="nome">
+        <input type="text" class="form-control" id="nome" placeholder="Digite seu nome: " [minlength]="3" maxlength="50" required [(ngModel)]="e_mail.fromName"
+          name="nome" pattern="[A-Za-zÀ-ÿ\s]+" #nome="ngModel">
+
+          <div *ngIf="nome.errors?.['required']" class="invalid-feedback">
+            O campo é obrigatório.
+          </div>
+          <div *ngIf="nome.errors?.['minlength']" class="invalid-feedback">
+            Espera-se no mínimo {{ nome.errors?.['minlength'].requiredLength }} caracteres.
+          </div>
+          <div *ngIf="nome.errors?.['pattern']" class="invalid-feedback">
+            Por favor, insira apenas letras.
+          </div>
+
       </div>
       <div class="mb-3 fw-bold text-white">
         <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" placeholder="name@example.com" required
-          [(ngModel)]="mail.fromEmail" name="email">
+        <input type="text" class="form-control" id="email" placeholder="name@example.com" maxlength="50" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"
+          [(ngModel)]="e_mail.fromEmail" name="email" #email="ngModel">
+
+          <div *ngIf="email.errors?.['required']" class="invalid-feedback">
+            O campo é obrigatório.
+          </div>
+
+          <div *ngIf="email.errors?.['pattern']" class="invalid-feedback">
+            Por favor, insira um endereço de e-mail válido.
+          </div>
+
       </div>
+
       <div class="mb-3 fw-bold mt-margin text-white marginMobile">
-        <label for="nome">assunto</label>
-        <input type="text" class="form-control" id="assunto" placeholder="Digite o assunto: " required [(ngModel)]="mail.subject"
-          name="subject">
+        <label for="nome">Assunto</label>
+        <input type="text" class="form-control" id="assunto" placeholder="Digite o assunto: " minlength="5" maxlength="100" required [(ngModel)]="e_mail.subject"
+          name="subject" #assunto="ngModel">
+
+          <div *ngIf="assunto.errors?.['required']" class="invalid-feedback">
+            O campo é obrigatório.
+          </div>
+          <div *ngIf="assunto.errors?.['minlength']" class="invalid-feedback">
+            Espera-se no mínimo {{ assunto.errors?.['minlength'].requiredLength }} caracteres.
+          </div>
+
       </div>
       <div class="mb-3 fw-bold text-white">
         <label for="mensagem">Mensagem</label>
-        <textarea type="text" class="form-control" id="mensagem" placeholder="Digite sua mensagem: " rows="3" required [(ngModel)]="mail.text"
-          name="mensagem"></textarea>
+        <textarea type="text" class="form-control" id="mensagem" placeholder="Digite sua mensagem: "rows="3" minlength="5" maxlength="250" required [(ngModel)]="e_mail.text"
+          name="mensagem" #mensagem="ngModel"></textarea>
+
+          <div *ngIf="mensagem.errors?.['required']" class="invalid-feedback">
+            O campo é obrigatório.
+          </div>
+          <div *ngIf="mensagem.errors?.['minlength']" class="invalid-feedback">
+            Espera-se no mínimo {{ mensagem.errors?.['minlength'].requiredLength }} caracteres.
+          </div>
+
       </div>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5 buttonMobile" style="margin-top: 1.5cm;">
-        <button type="submit" class="btn btn-outline-primary fw-bold button-enviar" onclick="onSubmit">Enviar</button>
+        <button type="submit" class="btn btn-outline-primary fw-bold button-enviar" onclick="onSubmit" [disabled]="validaBotao()">Enviar</button>
       </div>
+
+      @if (nome.errors?.['required'] || nome.errors?.['minlength'] || nome.errors?.['pattern'] || email.errors?.['pattern'] || email.errors?.['required'] || assunto.errors?.['minlength'] || assunto.errors?.['required'] || mensagem.errors?.['minlength'] || mensagem.errors?.['required']) {
+        <div class="alert alert-info marginAvisoMensagemFeed" role="alert">
+          Necessário preencher os campos acima!
+        </div>
+      }
+
     </form>
   </div>
 </body>

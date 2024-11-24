@@ -2,10 +2,13 @@ import { Component,OnInit,} from '@angular/core';
 import { ArquivoPDFService } from '../service/arquivoPDF.service';
 import { MudaClasseService } from '../service/mudaClasse.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { CommonModule } from '@angular/common';
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: 'app-home',
+    standalone: true,
+    imports: [CommonModule],
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 

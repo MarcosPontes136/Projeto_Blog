@@ -1,18 +1,12 @@
 <h2>
-  Projeto Meu Blog - RELEASE - 1.0
+  Projeto Meu Blog - RELEASE - 2.0
 </h2>
 <h2>
-  Imagem Docker (05/2024) 
+  Update Angular 19 - Update do Angular 15 para o 19 (11/2024) 
 </h2>
-<p>
-  Imagem criada e disponibilizada no docker hub.
-  <p> 
-    Comando usado para gerar imagem: <span style="color:red; font-weight:bold;">docker build -t projeto_blog:v2 .</span>
-  </p>
-</p>
-<p>
-  <u><i>https://hub.docker.com/repository/docker/marcospontes/projeto_blog/general</i></u>
-</p>
+<h4>
+  <i>Ajustado a versão do Angular para o mais recente e incluido mensagem de aviso, validação de campo e ajuste na versão mobile.</i>
+</h4>
 <br>
 <h2>
   Update Backend - Envia curriculo em PDF para o site. (05/2024) 
@@ -23,7 +17,6 @@
 <p>
   <u><i>https://github.com/MarcosPontes136/microsservice_MessageFeed</i></u>
 </p>
-<br>
 <h2>
   Update Backend - Envio de Email. (05/2023) 
 </h2>
