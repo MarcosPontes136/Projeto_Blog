@@ -1,14 +1,14 @@
-import { Component,OnInit,} from '@angular/core';
-import { ArquivoPDFService } from '../service/arquivoPDF.service';
-import { MudaClasseService } from '../service/mudaClasse.service';
+import { Component, OnInit, } from '@angular/core';
+import { ArquivoPDFService } from '../service/arquivoPDF/arquivoPDF.service';
+import { MudaClasseService } from '../service/mudaClasse/mudaClasse.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { CommonModule } from '@angular/common';
 @Component({
-    selector: 'app-home',
-    standalone: true,
-    imports: [CommonModule],
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+  selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
@@ -24,20 +24,26 @@ export class HomeComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
-    this.acaoSubscription = this.mudaClasseService.acao$.subscribe((estado: boolean) => {
-      this.isActive = estado;
-    });
+  ngOnInit() {
+    this.acaoSubscription = this.mudaClasseService.acao$
+      .subscribe({
+        next: (estado: boolean) => {
+          this.isActive = estado;
+        }
+      });
   }
 
-  mostraPDF(): void{
-    this.arquivoService.obterPDF().subscribe(pdf => {
-      this.pegaPDF(pdf);
-    })
+  mostraPDF(): void {
+    this.arquivoService.obterPDF()
+      .subscribe({
+        next: (pdf) => {
+          this.pegaPDF(pdf);
+        }
+      })
   }
 
-  private pegaPDF(pdfBlob: Blob): void{
-    const file = new Blob([pdfBlob], {type: 'application/pdf'});
+  private pegaPDF(pdfBlob: Blob): void {
+    const file = new Blob([pdfBlob], { type: 'application/pdf' });
     const fileURL = URL.createObjectURL(file);
     window.open(fileURL, '_blank');
   }
