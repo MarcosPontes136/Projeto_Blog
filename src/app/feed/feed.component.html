@@ -67,8 +67,8 @@
         <hr class="mt-5 mb-5">
         <h3 class="text-center mb-5 text-monospace line">Comentários adicionados</h3>
         <div class="container">
-          <div class="card mb-4" *ngFor="let feed of listFeed">
-            <div class="card body">
+          <div class="card mb-4" *ngFor="let feed of listFeed.slice().reverse()">
+            <div class="card body" class="form-control">
               <p class="card-text">{{feed.nome}}</p>
               <p class="card-text">{{feed.mensagem}}</p>
             </div>
