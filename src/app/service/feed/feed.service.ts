@@ -1,3 +1,4 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
@@ -17,8 +18,8 @@ constructor(private http: HttpClient) { }
     return this.http.get<Feed[]>(`${this.baseUrl}`)
   }
 
-  public feedMensagem(feed: Feed){
-    return this.http.post<Feed[]>('http://localhost:8081/api/feeds', feed)
+  public feedMessage(feed: Feed): Observable<Feed>{
+    return this.http.post<Feed>('http://localhost:8081/api/feeds', feed)
   }
 
 

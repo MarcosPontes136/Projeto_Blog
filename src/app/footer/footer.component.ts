@@ -2,7 +2,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
 import { faFacebook, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { MudaClasseService } from '../service/mudaClasse.service';
+import { MudaClasseService } from '../service/mudaClasse/mudaClasse.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
@@ -23,10 +23,13 @@ export class FooterComponent implements OnInit {
 
   constructor(    private mudaClasseService: MudaClasseService) { }
 
-  ngOnInit(): void {
-    this.acaoSubscription = this.mudaClasseService.acao$.subscribe((estado: boolean) => {
-      this.isActive = estado;
-    });
+  ngOnInit() {
+    this.acaoSubscription = this.mudaClasseService.acao$
+      .subscribe({
+        next: (estado: boolean) => {
+          this.isActive = estado;
+        }
+      });
   }
 
 }

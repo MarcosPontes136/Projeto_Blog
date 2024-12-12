@@ -1,4 +1,7 @@
 export class Feed{
-  public nome!: string
-  public mensagem!: string
+  public messageId!: string;
+  public nome!: string;
+  public mensagem!: string;
+  public statusMessage!: string;
 }
+

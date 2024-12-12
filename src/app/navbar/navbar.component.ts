@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MudaClasseService } from '../service/mudaClasse.service';
+import { MudaClasseService } from '../service/mudaClasse/mudaClasse.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
