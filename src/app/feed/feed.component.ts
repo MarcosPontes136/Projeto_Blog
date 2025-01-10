@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Feed } from 'src/assets/models/feed';
 import { FeedService } from '../service/feed/feed.service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { MudaClasseService } from '../service/mudaClasse/mudaClasse.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -14,12 +14,13 @@ import { PopMessageComponent } from "../pop-message/pop-message.component";
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss', '../app.component.scss']
 })
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit, OnDestroy {
 
   @ViewChild(PopMessageComponent) popMessageComponent!: PopMessageComponent;
 
-
+  private destroy$ = new Subject<void>();
   private acaoSubscription!: Subscription;
+
   isActive!: boolean;
 
   constructor(
@@ -35,6 +36,7 @@ export class FeedComponent implements OnInit {
 
   ngOnInit() {
     this.acaoSubscription = this.mudaClasseService.acao$
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (estado: boolean) => {
           this.isActive = estado;
@@ -45,6 +47,7 @@ export class FeedComponent implements OnInit {
 
   searchFeed() {
     this.feedService.getMessage()
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: Feed[]) => {
           this.listFeed = data
@@ -57,6 +60,7 @@ export class FeedComponent implements OnInit {
 
   registerMessage() {
     this.feedService.feedMessage(this.feed)
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response: Feed) => {
           this.listFeed.push(response);
@@ -86,6 +90,12 @@ export class FeedComponent implements OnInit {
       !this.feed.mensagem ||
       this.feed.mensagem.length < 5
     );
+  }
+
+  ngOnDestroy() {
+    // Completa o Subject para liberar as assinaturas
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

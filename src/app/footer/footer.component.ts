@@ -1,9 +1,9 @@
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatIconModule } from '@angular/material/icon';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { faFacebook, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { MudaClasseService } from '../service/mudaClasse/mudaClasse.service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,7 +13,8 @@ import { CommonModule } from '@angular/common';
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   private acaoSubscription!: Subscription;
   isActive!: boolean;
 
@@ -25,11 +26,18 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
     this.acaoSubscription = this.mudaClasseService.acao$
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (estado: boolean) => {
           this.isActive = estado;
         }
       });
+  }
+
+  ngOnDestroy() {
+    // Completa o Subject para liberar as assinaturas
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }
