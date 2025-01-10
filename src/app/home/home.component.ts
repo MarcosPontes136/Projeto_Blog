@@ -3,6 +3,7 @@ import { ArquivoPDFService } from '../service/arquivoPDF/arquivoPDF.service';
 import { MudaClasseService } from '../service/mudaClasse/mudaClasse.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { CommonModule } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent implements OnInit {
 
+  private destroy$ = new Subject<void>();
   private acaoSubscription!: Subscription;
   isActive!: boolean;
   isHome: boolean = true;
@@ -26,6 +28,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.acaoSubscription = this.mudaClasseService.acao$
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (estado: boolean) => {
           this.isActive = estado;
@@ -52,6 +55,12 @@ export class HomeComponent implements OnInit {
     const banner = document.querySelector('.banner');
     document.body.scrollTop = 1000; // Safari
     document.documentElement.scrollTop = 1000; // Chrome, Firefox, IE e Opera
+  }
+
+  ngOnDestroy() {
+    // Completa o Subject para liberar as assinaturas
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }
